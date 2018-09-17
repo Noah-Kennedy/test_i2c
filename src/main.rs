@@ -7,7 +7,7 @@ fn main() {
     let output = [1, 2, 3, 4, 5];
     i2c.write(&output).expect("Failed to write data");
     std::thread::sleep_ms(200);
-    let mut input:  [u8; 5] = [0, 0, 0, 0, 0];
+    let mut input:  [u8; 16] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     i2c.read(& mut input).expect("Failed to read data");
     
     for c in input.iter() {
