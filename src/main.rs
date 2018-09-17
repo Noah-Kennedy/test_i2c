@@ -7,7 +7,7 @@ fn main() {
     i2c.write(&output);
     std::thread::sleep_ms(200);
     let mut input:  [u8; 5] = [0, 0, 0, 0, 0];
-    i2c.read(& mut input);
+    i2c.read(& mut input).expect("Failed to read data");
     
     for c in input.iter() {
         println!("{}", c);
