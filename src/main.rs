@@ -3,7 +3,7 @@ use rppal::i2c;
 
 fn main() {
     let mut i2c = i2c::I2c::new().expect("Failed to create i2c");
-    i2c.set_slave_address(7).expect("Failed to set slave address");
+    i2c.set_slave_address(13).expect("Failed to set slave address");
     let output = [1, 2, 3, 4, 5];
     i2c.write(&output).expect("Failed to write data");
     std::thread::sleep_ms(200);
