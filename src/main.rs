@@ -52,9 +52,9 @@ fn echo(mut arduino: Box<i2c::I2c>) -> Box<i2c::I2c> {
         input[i] = queue.pop_front().expect("Error, queue empty");
     }
     
-    if input[0] != 1 {
-        panic!("input[0] != 1");
-    }
+    //if input[0] != 1 {
+    //    panic!("input[0] != 1");
+    //}
     
     println!("Input: {:?}", input);
     
