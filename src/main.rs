@@ -12,8 +12,9 @@ fn main() {
         
         let num_bytes = i2c.read(& mut receiving_payload).expect("Failed to read bytes");
         
-        if num_bytes > 0 {
-            println!("{}", std::str::from_utf8(&receiving_payload).expect("Invalid utf 8"));
+        match std::str::from_utf8(& receiving_payload) {
+            Ok(string) => println!("{}", string),
+            Err(_) => continue
         }
     }
 }
