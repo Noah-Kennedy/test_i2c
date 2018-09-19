@@ -20,7 +20,7 @@ fn main() {
         let num_bytes = i2c.read(& mut receiving_payload).expect("Could not read");
         
         for element in 0..num_bytes {
-            println!("{}", element);
+            println!("{}", receiving_payload[element]);
         }
     }
 }
