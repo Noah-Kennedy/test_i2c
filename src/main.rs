@@ -13,7 +13,7 @@ fn main() {
     
     loop {
         let sending_payload = [0, 1, 2, 3, 4, 5, 6, 7];
-        i2c.write(& sending_payload);
+        i2c.write(& sending_payload).expect("Could not send");
         
         let mut receiving_payload = [0; 8];
         
