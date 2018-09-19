@@ -5,14 +5,14 @@ const LENGTH: usize = 1;
 
 fn main() {
     let mut i2c = Box::new(i2c::I2c::new().expect("Failed to open I2C"));
-    i2c.set_slave_address(13).expect("Failed to set the slave address");
+    i2c.set_slave_address(17).expect("Failed to set the slave address");
     for i in 0..100000 {
         println!("Count: {}", i);
         i2c = echo(i2c);
     }
 }
 
-fn echo(mut serial: Box<i2c::I2c>) -> Box<i2c::I2c> {
+fn echo(mut arduino: Box<i2c::I2c>) -> Box<i2c::I2c> {
     let payload = [1, 2, 3, 4, 5, 6, 7, 8];
     
     let mut data: [u8; LENGTH] = [0; LENGTH];
@@ -24,7 +24,7 @@ fn echo(mut serial: Box<i2c::I2c>) -> Box<i2c::I2c> {
     let stopwatch = std::time::Instant::now();
     
     loop {
-        match serial.write(&payload){
+        match arduino.write(&payload){
             Ok(_) => break,
             Err(_) => continue
         }
@@ -32,7 +32,7 @@ fn echo(mut serial: Box<i2c::I2c>) -> Box<i2c::I2c> {
     
     while queue.len() < 8 {
         loop {
-            match serial.read(& mut data) {
+            match arduino.read(& mut data) {
                 Ok(_) => {
                     for i in 0..data.len() {
                         queue.push_back(data[i]);
@@ -60,5 +60,5 @@ fn echo(mut serial: Box<i2c::I2c>) -> Box<i2c::I2c> {
     
     println!("Time: {} millis", elapsed_time_millis);
     
-    serial
+    arduino
 }
