@@ -13,7 +13,7 @@ fn main() {
     
     loop {
         let sending_payload = b"Hello";
-        i2c.smbus_write_byte(7, 7).expect("Could not send");
+        i2c.write(sending_payload).expect("Could not send");
         
         let mut receiving_payload = [0; 8];
         
