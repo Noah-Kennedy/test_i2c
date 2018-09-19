@@ -5,6 +5,7 @@ const LENGTH: usize = 1;
 
 fn main() {
     let mut i2c = Box::new(i2c::I2c::new().expect("Failed to open I2C"));
+    i2c.set_slave_address(13).expect("Failed to set the slave address");
     for i in 0..100000 {
         println!("Count: {}", i);
         i2c = echo(i2c);
