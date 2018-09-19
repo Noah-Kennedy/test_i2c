@@ -33,8 +33,8 @@ fn echo(mut arduino: Box<i2c::I2c>) -> Box<i2c::I2c> {
     while queue.len() < 8 {
         loop {
             match arduino.read(& mut data) {
-                Ok(_) => {
-                    for i in 0..data.len() {
+                Ok(num_bytes) => {
+                    for i in 0..num_bytes {
                         queue.push_back(data[i]);
                     }
                     break;
