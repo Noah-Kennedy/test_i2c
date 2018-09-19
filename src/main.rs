@@ -10,8 +10,10 @@ fn main() {
     loop {
         let mut receiving_payload = [0; 5];
         
-        i2c.read(& mut receiving_payload);
+        let num_bytes = i2c.read(& mut receiving_payload).expect("Failed to read bytes");
         
-        println!("{}", std::str::from_utf8(&receiving_payload).expect("Invalid utf 8"));
+        if num_bytes > 0 {
+            println!("{}", std::str::from_utf8(&receiving_payload).expect("Invalid utf 8"));
+        }
     }
 }
