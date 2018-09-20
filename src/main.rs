@@ -9,7 +9,7 @@ fn main() {
     i2c.set_slave_address(17).expect("Failed to set the slave address");
     
     loop {
-        let message: Message = [1, 2, 3, 4, 5, 6, 7, 7];
+        let message: Message = [1, 2, 3, 4, 5, 6, 7, 8];
         let mut queue = VecDeque::new();
     
         i2c.write(& message).expect("Failed to write");
