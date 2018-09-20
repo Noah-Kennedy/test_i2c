@@ -19,7 +19,7 @@ fn main() {
             
             queue.push_back(received);
             
-            println!("{}", received);
+            println!("{:?}", received);
             
             if queue.len() >= 8 {
                 break;
