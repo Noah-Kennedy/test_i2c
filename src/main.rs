@@ -14,11 +14,6 @@ fn main() {
         
         println!("{}", num_bytes);
         
-        //match std::str::from_utf8(& receiving_payload) {
-        //    Ok(string) => println!("{}", string),
-        //    Err(_) => continue
-        //}
-        
-        println!("{}", std::string::String::from_utf8_lossy(& receiving_payload))
+        println!("{:?}", receiving_payload)
     }
 }
