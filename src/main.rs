@@ -19,20 +19,22 @@ fn main() {
             
             queue.push_back(received);
             
-            //println!("{:?}", received);
-            
             if queue.len() >= 8 {
                 break;
             }
         }
         
-        let mut received_word: Message = [0; 8];
+        //let mut received_word: Message = [0; 8];
     
-        for i in 0..8 {
-            received_word[i] = queue.pop_front().expect("Queue empty");
-        }
+        //for i in 0..8 {
+        //    received_word[i] = queue.pop_front().expect("Queue empty");
+        //}
         
-        println!("{:?}", received_word);
+        println!("{:?}", queue);
+        
+        while !queue.is_empty() {
+            queue.pop_front();
+        }
     }
 }
 
